@@ -1,22 +1,58 @@
-﻿namespace ZCache.Interfaces
+﻿namespace ZCache.Windows
 {
+	using System;
+	using System.Windows.Controls;
+
 	/// <summary>
-	/// Resource loaded event arguments.
+	/// Error window that displays exceptions, URI errors, and messages.
 	/// </summary>
-	public class ResourceLoadedEventArgs
+	public partial class ErrorWindow : ChildWindow
 	{
 		/// <summary>
-		/// Returns true if data request was a success.
+		/// Constructor that accepts an exception.
 		/// </summary>
-		public bool Success { get; set; }
+		/// <param name="e">Exception.</param>
+		public ErrorWindow(Exception e)
+		{
+			InitializeComponent();
+			if ( e != null )
+			{
+				ErrorTextBox.Text =
+					e.Message +
+					Environment.NewLine +
+					Environment.NewLine +
+					e.StackTrace;
+			}
+		}
 
 		/// <summary>
-		/// Default constructor.
+		/// Constructor that accepts a URI.
 		/// </summary>
-		/// <param name="success">Data request status.</param>
-		public ResourceLoadedEventArgs(bool success)
+		/// <param name="uri">URI.</param>
+		public ErrorWindow(Uri uri)
 		{
-			this.Success = success;
+			InitializeComponent();
+			if ( uri != null )
+			{
+				ErrorTextBox.Text = "Page not found: \"" + uri.ToString() + "\"";
+			}
 		}
+
+		/// <summary>
+		/// Constructor that accepts a brief message, and details.
+		/// </summary>
+		/// <param name="message">Message header.</param>
+		/// <param name="details">Details (usually stacktrace).</param>
+		public ErrorWindow(string message, string details)
+		{
+			InitializeComponent();
+
+			ErrorTextBox.Text =
+				message +
+				Environment.NewLine +
+				Environment.NewLine +
+				details;
+		}
+
 	}
 }

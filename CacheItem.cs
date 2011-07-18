@@ -202,29 +202,6 @@
 		}
 
 		/// <summary>
-		/// Refreshes cache at set intervals.
-		/// </summary>
-		public void RefreshCache()
-		{
-			try
-			{
-				if ( this.CacheQuery != null && this.EntityCache.Count > 0 )
-				{
-					//var lastEntity = this.EntityCache[this.EntityCache.Count - 1];
-
-
-					// Fix this.
-					CacheQuery.AddQueryOption(
-						"$count",
-						string.Format("{0} gt {1}",
-						"PUICodeID",
-						"5"));
-				}
-			}
-			catch ( Exception ex ) { new Windows.ErrorWindow(ex).Show(); }
-		}
-
-		/// <summary>
 		/// Checks for completion of cache save.
 		/// </summary>
 		private void CheckCompletion()
@@ -241,7 +218,5 @@
 		/// Resource loaded event.
 		/// </summary>
 		public event Interfaces.ResourceLoad ResourceLoaded;
-
-
 	}
 }

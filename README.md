@@ -12,4 +12,4 @@ Don't hurt me.
 Technologies used
 -----------------
  * [.NET Framework 4.0](http://msdn.microsoft.com/netframework), [C#](http://msdn.microsoft.com/vcsharp)
- * [Entity Framework 5.0](http://msdn.microsoft.com/en-us/data/aa937723)
+ * [Entity Framework 4.1](http://msdn.microsoft.com/en-us/data/aa937723)
